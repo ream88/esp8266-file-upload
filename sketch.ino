@@ -1,7 +1,15 @@
 #include <ESP8266WiFi.h>
+#include <ESP8266WebServer.h>
+
 #include "./config.h"
 
 WiFiClient wifi;
+ESP8266WebServer server(80);
+
+void handleIndex()
+{
+  server.send(200, "text/html", "Hello world");
+}
 
 void setup()
 {
@@ -14,6 +22,10 @@ void setup()
   }
 
   setupWiFi();
+
+  server.on("/", handleIndex);
+  server.begin();
+
   blink(2);
 }
 
@@ -51,4 +63,5 @@ void blink(int count)
 
 void loop()
 {
+  server.handleClient();
 }
