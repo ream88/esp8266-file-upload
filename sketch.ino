@@ -2,13 +2,14 @@
 #include <ESP8266WebServer.h>
 
 #include "./config.h"
+#include "./html.h"
 
 WiFiClient wifi;
 ESP8266WebServer server(80);
 
 void handleIndex()
 {
-  server.send(200, "text/html", "Hello world");
+  server.send(200, "text/html", HTML_INDEX);
 }
 
 void setup()
