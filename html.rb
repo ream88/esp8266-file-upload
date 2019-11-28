@@ -14,7 +14,7 @@ defines = Dir['./html/*.html'].map do |file|
                .join("\n")
 
   <<~C
-    #define HTML_#{name} #{define}
+    #define HTML_#{name} #{define}\n
   C
 end
 
